@@ -1,25 +1,12 @@
-smtp-relay-snippets
-===================
+Critsend sending API
+====================
 
-How to send emails with Critsend
+How to send emails with Critsend using its sending API.
 
-DEPENDENCIES
-============
+Note: We are currently in provate beta regarding our new REST api.
+Contact support@critsend.com if you want to be part of it.
 
-ASP.NET:
-* None
-
-Java:
-* None
-
-PHP:
-* The PHP PEAR mail package must be installed.
-
-Python:
-* None
-
-Ruby:
-* None (actionmailer comes preinstalled)
+If you're looking for the Ruby Gem, it can be found here:  http://rubygems.org/gems/MxmConnect
 
 
 
