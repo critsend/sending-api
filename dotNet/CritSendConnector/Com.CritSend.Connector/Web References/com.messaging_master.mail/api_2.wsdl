@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://mxmaster.net/campaign/0.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://mxmaster.net/campaign/0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://mxmaster.net/campaign/0.1">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="Authentication">
+        <xsd:all>
+          <xsd:element name="user" type="xsd:string" />
+          <xsd:element name="timestamp" type="xsd:dateTime" />
+          <xsd:element name="signature" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="CampaignParameters">
+        <xsd:all>
+          <xsd:element name="tag" type="tns:ArrayTag" />
+          <xsd:element name="mailfrom" type="xsd:string" />
+          <xsd:element name="mailfrom_friendly" type="xsd:string" />
+          <xsd:element name="replyto" type="xsd:string" />
+          <xsd:element name="replyto_filtered" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Content">
+        <xsd:all>
+          <xsd:element name="subject" type="xsd:string" />
+          <xsd:element name="html" type="xsd:string" />
+          <xsd:element name="text" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Subscribers">
+        <xsd:all>
+          <xsd:element name="descriptor" type="tns:Email" />
+          <xsd:element name="database" type="tns:ArrayEmail" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Email">
+        <xsd:all>
+          <xsd:element name="email" type="xsd:string" />
+          <xsd:element name="field1" type="xsd:string" />
+          <xsd:element name="field2" type="xsd:string" />
+          <xsd:element name="field3" type="xsd:string" />
+          <xsd:element name="field4" type="xsd:string" />
+          <xsd:element name="field5" type="xsd:string" />
+          <xsd:element name="field6" type="xsd:string" />
+          <xsd:element name="field7" type="xsd:string" />
+          <xsd:element name="field8" type="xsd:string" />
+          <xsd:element name="field9" type="xsd:string" />
+          <xsd:element name="field10" type="xsd:string" />
+          <xsd:element name="field11" type="xsd:string" />
+          <xsd:element name="field12" type="xsd:string" />
+          <xsd:element name="field13" type="xsd:string" />
+          <xsd:element name="field14" type="xsd:string" />
+          <xsd:element name="field15" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayEmail">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Email" type="tns:Email" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayTag">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Tag" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendCampaignRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="subscribers" type="tns:ArrayEmail" />
+    <wsdl:part name="parameters" type="tns:CampaignParameters" />
+    <wsdl:part name="content" type="tns:Content" />
+  </wsdl:message>
+  <wsdl:message name="sendCampaignResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendEmailRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="subscribers" type="tns:ArrayEmail" />
+    <wsdl:part name="parameters" type="tns:CampaignParameters" />
+    <wsdl:part name="content" type="tns:Content" />
+  </wsdl:message>
+  <wsdl:message name="sendEmailResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="createTagRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="tag" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createTagResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="resetTagRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="tag" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="resetTagResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="deleteTagRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="tag" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteTagResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="listAllTagsRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="listAllTagsResponse">
+    <wsdl:part name="return" type="tns:ArrayTag" />
+  </wsdl:message>
+  <wsdl:message name="isTagRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="tag" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="isTagResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getTagRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="tag" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getTagResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getTagPaginatedRequest">
+    <wsdl:part name="authentication" type="tns:Authentication" />
+    <wsdl:part name="tag" type="xsd:string" />
+    <wsdl:part name="start" type="xsd:int" />
+    <wsdl:part name="offset" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getTagPaginatedResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="WSDL 0.1 for MxMasterPortType">
+    <wsdl:operation name="sendCampaign">
+      <documentation>To send a campaign of email</documentation>
+      <wsdl:input message="tns:sendCampaignRequest" />
+      <wsdl:output message="tns:sendCampaignResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <documentation>To send a small quantity of emails (&lt; 10)</documentation>
+      <wsdl:input message="tns:sendEmailRequest" />
+      <wsdl:output message="tns:sendEmailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createTag">
+      <documentation>Idempotent operation</documentation>
+      <wsdl:input message="tns:createTagRequest" />
+      <wsdl:output message="tns:createTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="resetTag">
+      <wsdl:input message="tns:resetTagRequest" />
+      <wsdl:output message="tns:resetTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTag">
+      <documentation>Deprecated; please use resetTag</documentation>
+      <wsdl:input message="tns:deleteTagRequest" />
+      <wsdl:output message="tns:deleteTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllTags">
+      <wsdl:input message="tns:listAllTagsRequest" />
+      <wsdl:output message="tns:listAllTagsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="isTag">
+      <wsdl:input message="tns:isTagRequest" />
+      <wsdl:output message="tns:isTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTag">
+      <wsdl:input message="tns:getTagRequest" />
+      <wsdl:output message="tns:getTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTagPaginated">
+      <wsdl:input message="tns:getTagPaginatedRequest" />
+      <wsdl:output message="tns:getTagPaginatedResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSDL 0.1 for MxMasterBinding" type="tns:WSDL 0.1 for MxMasterPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="sendCampaign">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTag">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetTag">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTag">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllTags">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isTag">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTag">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTagPaginated">
+      <soap:operation soapAction="http://mxmaster.net/campaign/0.1#doCampaign" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://mxmaster.net/campaign/0.1" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSDL 0.1 for MxMaster">
+    <wsdl:port name="WSDL 0.1 for MxMasterPort" binding="tns:WSDL 0.1 for MxMasterBinding">
+      <soap:address location="http://mail6.messaging-master.com/api_2.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
