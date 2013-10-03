@@ -42,7 +42,7 @@ class MxmConnect {
 	                        'http://mail4.messaging-master.com',
 	                        'http://mail5.messaging-master.com',
 	                        'http://mail9.messaging-master.com',
-	                        'http://mail25.messaging-master.com',
+	                        'http://mail26.messaging-master.com',
 	                        );
 
 	//Put in to true to activate debug mode
@@ -135,7 +135,7 @@ class MxmConnect {
 	public function listAllTags() {
 		$auth = $this->getAuth();
 		$res = $this->client->listAllTags($auth);
-		//Traitement du résultat pour avoir toujours un tableau
+		//Traitement du rï¿½sultat pour avoir toujours un tableau
 		if (!(empty($res->Tag))) {
 			if (count($res->Tag == 1)) {
 				return array($res->Tag);
