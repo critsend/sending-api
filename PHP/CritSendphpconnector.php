@@ -182,7 +182,6 @@ class MxmConnect {
 	 * You only need to set the defined variable. For instance, if I use only two fields then I would pass for instance:
 	 * array('email'=>'ntoper@gmail.com', 'field1'=>'Nico', 'field2'=>'homme')
 	 *
-	 * @see http://dev.m--x--m.net for details on templating.
 	 *
 	 * For instance,
 	 * $database = array( 
