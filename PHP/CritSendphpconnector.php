@@ -41,8 +41,8 @@ class MxmConnect {
 	private static $hosts = array('http://mail1.messaging-master.com', 
 	                        'http://mail4.messaging-master.com',
 	                        'http://mail5.messaging-master.com',
-	                        'http://mail9.messaging-master.com',
-	                        'http://mail26.messaging-master.com',
+	                        'http://mail15.messaging-master.com',
+	                        'http://mail20.messaging-master.com',
 	                        );
 
 	//Put in to true to activate debug mode
