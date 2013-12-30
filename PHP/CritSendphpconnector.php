@@ -37,12 +37,12 @@ class MxmConnect {
 	private static $wsdl ='/api_2.php?wsdl';
 	//Host for reporting :)
 	private static $default_host = 'http://mail1.messaging-master.com';
-	private static $fast_host = array('http://mail1.messaging-master.com', 'http://mail4.messaging-master.com');
-	private static $hosts = array('http://mail1.messaging-master.com', 
-	                        'http://mail4.messaging-master.com',
-	                        'http://mail5.messaging-master.com',
-	                        'http://mail15.messaging-master.com',
-	                        'http://mail20.messaging-master.com',
+	private static $fast_host = array('http://smtp.critsend.com', 'http://smtp.critsend.com');
+	private static $hosts = array('http://smtp.critsend.com', 
+	                        'http://smtp.critsend.com',
+	                        'http://smtp.critsend.com',
+	                        'http://smtp.critsend.com',
+	                        'http://smtp.critsend.com',
 	                        );
 
 	//Put in to true to activate debug mode
